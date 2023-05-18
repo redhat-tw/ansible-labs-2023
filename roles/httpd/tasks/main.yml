@@ -1,0 +1,37 @@
+--- 
+
+- name: Installing Apache Server packages
+  package:
+    name: "{{ apache_packages }}"
+    state: latest
+
+- name: Create defult index.html file
+  copy:
+    content: "{{ apache_default_content }}"
+    dest: /var/www/html/index.html
+  notify: Restart apache server
+
+- name: Modify listent port
+  become: yes
+  lineinfile:
+    dest:  "{{ apache_conf_dir }}/conf/httpd.conf"
+    regexp: "^Listen [0-9]*"
+    line: "Listen {{ apache_listen_port }}"
+    state: present
+    backrefs: yes
+  notify: Reload apache server
+  tags: apache_config
+
+- name: Open firewall for {{ apache_firewalld_port }}
+  firewalld:
+    port: "{{ apache_firewalld_port }}"
+    permanent: yes
+    state: enabled
+
+- name: Check Apache version
+  command: "httpd -v"
+
+- name: Test if Apache is installed and running
+  uri:
+    url: "http://localhost:{{ apache_listen_port }}"    
+  changed_when: False

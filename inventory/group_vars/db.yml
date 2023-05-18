@@ -1,0 +1,9 @@
+---
+
+# mysql_root_password: "Pass4mysql!"
+
+# mysql_db_name: test
+# insert_data_list:
+#  - id: 1
+#    name: Kyle
+   

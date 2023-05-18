@@ -1,0 +1,34 @@
+---
+
+- name: Connection DB via MySQL collection
+  hosts: db
+  gather_facts: false
+  become: false
+  serial: 1
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  tasks:
+  - name: Create a new database with name '{{ mysql_db_name }}'
+    community.mysql.mysql_db:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      name: "{{ mysql_db_name }}"
+      state: present
+
+  - name: Create a table and show tables
+    community.mysql.mysql_query:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      login_db: "{{ mysql_db_name }}"
+      query:
+      - CREATE TABLE if not exists Employee(ID INT, Name VARCHAR(50));
+      - SHOW TABLES;
+      single_transaction: true
+
+  - name: Insert data into Employee table
+    community.mysql.mysql_query:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      login_db: "{{ mysql_db_name }}"
+      query: "INSERT INTO Employee (ID, NAME) VALUES ({{ item.id }}, '{{ item.name }}')"
+      single_transaction: true
+    with_items: "{{ insert_data_list }}"

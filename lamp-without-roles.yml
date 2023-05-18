@@ -1,0 +1,68 @@
+---
+
+- name: Deploying LAMP Stack on Centos 8
+  hosts: all
+  gather_facts: true
+  become: yes
+  vars:
+    mysql_root_password: "Pass4mysql!"
+  tasks:
+    - name: Installing Apache Server
+      package:
+        name: httpd
+        state: present
+
+    - name: Create demo index.html
+      copy:
+        content: 'welcome to this apache'
+        dest: /var/www/html/index.html
+
+    - name: Start Apache service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Install PHP Modules
+      yum:
+        name:
+          - php
+          - php-cli
+          - php-fpm
+          - php-zip
+          - php-devel
+          - php-gd
+          - php-curl
+          - php-mysqlnd
+          - php-mbstring
+          - php-process
+          - php-xmlrpc
+          - php-xml
+          - php-xml
+          - php-pear
+          - php-bcmath
+          - php-json
+
+    - name: Install MariaDB
+      yum:
+        name:
+          - mariadb
+          - python3-PyMySQL
+          - mariadb-server
+          - mariadb-devel
+          - mariadb-server-utils
+        state: latest
+
+    - name: start mariadb
+      service:
+        name: mariadb
+        enabled: true
+        state: started
+    - name: mysql_root_password
+      mysql_user:
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        check_implicit_admin: true
+        password: "{{ mysql_root_password }}"
+        host: localhost

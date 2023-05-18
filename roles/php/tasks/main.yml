@@ -1,0 +1,25 @@
+---
+
+- name: Installing PHP packages
+  package:
+    name: "{{ php_packages }}"
+    state: latest
+
+- name: Start PHP-FPM
+  service:
+    name: php-fpm
+    enabled: true
+    state: restarted
+  notify: 
+  - Restart apache server
+  - Test PHP info page
+
+- name: Copy info.php page
+  copy:
+    src: info.php
+    dest: /var/www/html/info.php
+
+- name: Create employee.php page
+  template:
+    src: "employee.php.j2"
+    dest: "/var/www/html/employee.php"

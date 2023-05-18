@@ -1,0 +1,13 @@
+---
+
+- name: Reload MySQL server
+  service: 
+    name: "{{ mysql_service }}"
+    state: reloaded
+    enabled: yes
+    
+- name: Restart MySQL server
+  service: 
+    name: "{{ mysql_service }}"
+    state: restarted
+    enabled: yes

@@ -1,0 +1,31 @@
+---
+
+- name: Installing MySQL Server packages
+  package:
+    name: "{{ mysql_packages }}"
+    state: latest
+
+- name: Start MySQL server
+  service:
+    name: "{{ mysql_service }}"
+    enabled: true
+    state: started
+
+- name: Check mysql_root_password length >= 10
+  when: (mysql_root_password | length) < 10
+  fail: 
+    msg: "MySQL root password invalid length, must >= 10 chars"
+
+- name: Setup MySQL root Password
+  mysql_user:
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    user: root
+    check_implicit_admin: true
+    password: "{{ mysql_root_password }}"
+    host: localhost
+
+- name: Collect info about databases and version
+  mysql_info:
+    login_user: root
+    login_password: "{{ mysql_root_password }}"

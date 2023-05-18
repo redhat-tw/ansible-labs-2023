@@ -1,0 +1,11 @@
+---
+
+apache_packages:
+- httpd 
+- httpd-tools
+
+apache_service: httpd
+apache_user: apache
+
+apache_conf_dir: /etc/httpd
+apache_log_dir: /var/log/httpd

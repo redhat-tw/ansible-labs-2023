@@ -1,0 +1,38 @@
+---
+
+profile: null
+
+parseable: true
+quiet: false
+strict: true
+progressive: false
+verbosity: 1
+
+exclude_paths:
+- inventory/local
+- tests/
+- .github/
+- scripts/
+- .ansible-lint
+- .yamllint
+- .chglog/
+
+warn_list:
+- 'fqcn[action]'
+- 'fqcn[action-core]'
+- 'name[template]'
+- 'args[module]'
+
+skip_list:
+# see https://docs.ansible.com/ansible-lint/rules/default_rules.html for a list of all default rules
+- '106'
+- '204'
+- '208'
+- '301'
+- '303'
+- '503'
+- '701'
+- 'fqcn[action]'
+- 'fqcn[action-core]'
+- 'name[template]'
+- 'args[module]'

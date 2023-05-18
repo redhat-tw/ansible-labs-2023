@@ -1,0 +1,7 @@
+---
+
+# php_database:
+#   host: localhost
+#   username: root
+#   password: "Pass4mysql!"
+#   name: test
