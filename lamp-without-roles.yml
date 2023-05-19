@@ -58,6 +58,7 @@
         name: mariadb
         enabled: true
         state: started
+
     - name: mysql_root_password
       mysql_user:
         login_user: root

@@ -1,6 +1,5 @@
 ---
 
-
 - name: Reload apache server
   service:
     name: "{{ apache_service }}"
@@ -12,3 +11,8 @@
     name: "{{ apache_service }}"
     state: restarted
     enabled: yes
+
+- name: Test if Apache is installed and running
+  uri:
+    url: "http://localhost:{{ apache_listen_port }}"    
+  changed_when: False

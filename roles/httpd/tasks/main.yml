@@ -4,12 +4,14 @@
   package:
     name: "{{ apache_packages }}"
     state: latest
+  notify: 
+  - Restart apache server
+  - Test if Apache is installed and running
 
 - name: Create defult index.html file
   copy:
     content: "{{ apache_default_content }}"
     dest: /var/www/html/index.html
-  notify: Restart apache server
 
 - name: Modify listent port
   become: yes
@@ -19,7 +21,9 @@
     line: "Listen {{ apache_listen_port }}"
     state: present
     backrefs: yes
-  notify: Reload apache server
+  notify: 
+  - Reload apache server
+  - Test if Apache is installed and running
   tags: apache_config
 
 - name: Open firewall for {{ apache_firewalld_port }}
@@ -28,10 +32,8 @@
     permanent: yes
     state: enabled
 
+- name: Reload firewalld
+  command: "firewall-cmd --reload"
+
 - name: Check Apache version
   command: "httpd -v"
-
-- name: Test if Apache is installed and running
-  uri:
-    url: "http://localhost:{{ apache_listen_port }}"    
-  changed_when: False
