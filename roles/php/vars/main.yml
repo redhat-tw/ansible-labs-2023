@@ -1,5 +1,7 @@
 ---
 
+apache_service: httpd
+
 php_packages:
 - php
 - php-cli
