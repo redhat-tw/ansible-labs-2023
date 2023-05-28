@@ -13,4 +13,8 @@
   hosts: web
   roles:
   - { role: roles/httpd, tags: apache }
+
+- <<: *default_config
+  hosts: web
+  roles:
   - { role: roles/php, tags: php }
