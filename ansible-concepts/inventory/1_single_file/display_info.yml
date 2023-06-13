@@ -1,0 +1,15 @@
+---
+
+- name: Get the informaion of machines
+  hosts: linux
+  gather_facts: no
+  tasks:
+  - name: Display machine information
+    debug:
+      msg:
+      - "Machine Name: {{ inventory_hostname }}"
+      - "Application Name: {{ app_name }}"
+      - "Service Name: {{ system_services }}"
+      - "vCenter Datacenter: {{ vm_datacenter_name }}"
+      - "VM Folder Name: {{ vm_folder_name }}"
+    

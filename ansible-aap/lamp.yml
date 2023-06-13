@@ -1,0 +1,16 @@
+---
+
+- &default_config
+  hosts: db
+  gather_facts: false
+  become: false
+  serial: 1
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles:
+  - { role: roles/mariadb, tags: mariadb }
+
+- <<: *default_config
+  hosts: web
+  roles:
+  - { role: roles/httpd, tags: apache }
+  - { role: roles/php, tags: php }

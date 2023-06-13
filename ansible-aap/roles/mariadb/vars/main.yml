@@ -1,0 +1,12 @@
+---
+
+mariadb_packages:
+- mariadb
+- python3-PyMySQL
+- mariadb-server
+- mariadb-devel
+- mariadb-server-utils
+
+mariadb_service: mariadb
+
+mariadb_conf_dir: /etc/httpd

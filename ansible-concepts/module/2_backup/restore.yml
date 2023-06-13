@@ -1,0 +1,19 @@
+- name: Restore the data on Managed Node
+  hosts: linux
+  gather_facts: no
+  tasks:
+  - name: Restore data on Managed Node
+    vars:
+      src_path: "{{ backup_files.dest }}/{{ (backup_files.src | win_basename | trim ) }}"
+      dest_path: "{{ backup_files.src | dirname}}"
+    copy:
+      src: "{{ src_path }}"
+      dest: "{{ dest_path }}"
+      remote_src: true
+  
+      
+    
+
+
+
+      

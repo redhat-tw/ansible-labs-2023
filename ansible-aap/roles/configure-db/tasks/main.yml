@@ -1,0 +1,27 @@
+---
+
+- name: Create a new database with name '{{ mariadb_db_name }}'
+  community.mysql.mysql_db:
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+    name: "{{ mariadb_db_name }}"
+    state: present
+
+- name: Create a table and show tables
+  community.mysql.mysql_query:
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+    login_db: "{{ mariadb_db_name }}"
+    query:
+    - CREATE TABLE if not exists Employee(ID INT, Name VARCHAR(50));
+    - SHOW TABLES;
+    single_transaction: true
+
+- name: Insert data into Employee table
+  community.mysql.mysql_query:
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+    login_db: "{{ mariadb_db_name }}"
+    query: "INSERT INTO Employee (ID, NAME) VALUES ({{ item.id }}, '{{ item.name }}')"
+    single_transaction: true
+  with_items: "{{ insert_data_list }}"

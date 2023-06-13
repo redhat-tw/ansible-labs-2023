@@ -1,0 +1,5 @@
+---
+
+mariadb_packages: []
+mariadb_root_password: ""
+mariadb_db_name: ""

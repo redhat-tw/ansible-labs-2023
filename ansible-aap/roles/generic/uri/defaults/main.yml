@@ -1,0 +1,10 @@
+---
+
+uri_delegate_host: ""
+
+uri_retries: 5
+uri_retry_delay: 10
+
+urls:
+- url: https://www.google.com/
+  status_code: 200

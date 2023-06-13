@@ -1,0 +1,11 @@
+---
+
+#app_name: 
+#- mariadb
+
+mariadb_root_password: "Pass4mariadb!"
+mariadb_db_name: test
+insert_data_list:
+- id: 1
+  name: Kyle
+   

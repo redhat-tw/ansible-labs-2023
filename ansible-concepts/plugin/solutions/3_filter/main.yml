@@ -1,0 +1,17 @@
+---
+
+- name: filter plugin demo
+  hosts: linux
+  gather_facts: no
+  tasks:
+  ## Use lookup plugin
+  - name: Retrieve the employ data
+    set_fact: 
+      employee_list: "{{ lookup('file', './file/employ_lists.json')  }}"
+      employ_name: ""
+  
+  ## Use filter plugin
+  - debug:
+      msg: "{{ employee_list | json_query(query) }}"
+    vars:
+      query: "employ_list[?name=='{{ employ_name }}']"

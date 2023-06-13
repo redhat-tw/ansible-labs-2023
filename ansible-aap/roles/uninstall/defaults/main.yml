@@ -1,0 +1,5 @@
+---
+app_name: []
+is_skip_uninstall: false
+apache_listen_port: 80
+apache_firewalld_port: "{{ apache_listen_port }}/tcp"

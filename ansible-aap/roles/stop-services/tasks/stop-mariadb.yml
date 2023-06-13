@@ -1,0 +1,6 @@
+---
+
+- name: Stop mariadb services
+  service:
+    name: "{{ mariadb_service }}"
+    state: stopped

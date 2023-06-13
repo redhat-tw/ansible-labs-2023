@@ -1,0 +1,12 @@
+---
+
+user_list:
+- username: "test1"
+  password: "P@ssw0rd"
+  group: redhat
+- username: "test2"
+  password: "123456"
+  group: redhat
+- username: "test3"
+  password: "456789"
+  group: redhat

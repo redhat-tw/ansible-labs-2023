@@ -1,0 +1,21 @@
+---
+
+#app_name: 
+#- apache
+
+apache_listen_port: 80
+
+php_database:
+  host: localhost
+  username: root
+  password: "Pass4mariadb!"
+  name: test
+
+
+smoke_test_urls:
+- url: "http://{{ inventory_hostname }}:{{ apache_listen_port }}/info.php"
+  status_code: 200
+- url: "http://{{ inventory_hostname }}:{{ apache_listen_port }}/employee.php"
+  status_code: 200
+#- url: "http://{{ inventory_hostname }}:{{ apache_listen_port }}/fakeurl.php"
+#  status_code: 200

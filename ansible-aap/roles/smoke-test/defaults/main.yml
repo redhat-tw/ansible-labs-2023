@@ -1,0 +1,6 @@
+---
+
+is_skip_smoke_testing: false
+
+smoke_test_delegate_host: "localhost"
+smoke_test_urls: []

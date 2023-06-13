@@ -1,0 +1,13 @@
+---
+
+- name: Stop httpd service
+  import_tasks: stop-httpd.yml
+  when:
+  - not is_skip_stop_services
+  - "'apache' in app_name"
+
+- name: Stop mariadb service
+  import_tasks: stop-mariadb.yml
+  when:
+  - not is_skip_stop_services
+  - "'mariadb' in app_name"

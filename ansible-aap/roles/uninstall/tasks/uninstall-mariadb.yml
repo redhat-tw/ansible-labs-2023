@@ -1,0 +1,11 @@
+---
+
+- name: remove mariadb packages
+  package:
+    name: "{{ mariadb_packages }}"
+    state: absent
+
+- name: remove mariadb file
+  file:
+    path: /var/lib/mysql
+    state: absent

@@ -1,0 +1,20 @@
+---
+apache_service: httpd
+
+php_packages:
+- php
+- php-cli
+- php-fpm
+- php-zip
+- php-devel
+- php-gd
+- php-curl
+- php-mysqlnd
+- php-mbstring
+- php-process
+- php-xmlrpc
+- php-xml
+- php-xml
+- php-pear
+- php-bcmath
+- php-json

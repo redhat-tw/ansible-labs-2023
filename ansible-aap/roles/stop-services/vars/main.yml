@@ -1,0 +1,4 @@
+---
+
+mariadb_service: mariadb
+apache_service: httpd

@@ -1,0 +1,6 @@
+---
+
+- name: Stop httpd services
+  service:
+    name: "{{ apache_service }}"
+    state: stopped

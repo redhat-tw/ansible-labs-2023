@@ -1,0 +1,7 @@
+---
+
+- name: Run Linux cURL
+  import_tasks: linux.yml
+  when:
+  - (urls | length) > 0 and (urls | type_debug) == "list"
+  - uri_delegate_host == 'localhost'

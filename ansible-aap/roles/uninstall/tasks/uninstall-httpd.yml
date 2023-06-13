@@ -1,0 +1,24 @@
+---
+
+- name: close httpd firewall
+  firewalld:
+    port: "{{ apache_firewalld_port }}"
+    permanent: yes
+    state: disabled
+
+- name: Reload firewalld
+  command: "firewall-cmd --reload"
+
+- name: remove httpd file
+  file:
+    path: "/var/www/html/{{ item }}"
+    state: absent
+  with_items:
+  - index.html
+  - info.php
+  - employee.php
+
+- name: remove httpd packages
+  package:
+    name: "{{ apache_packages }}"
+    state: absent
