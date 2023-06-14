@@ -1,0 +1,25 @@
+- name: Backup the data on Managed Node
+  hosts: linux
+  gather_facts: no
+  vars:
+    backup_files:
+      src: "/var/www/html/index.html" # folder name or file name
+      dest: "/mnt/backup" # folder name
+  tasks:
+  - name: Create backup dictories on control node
+    file:
+      path: "{{ backup_files.dest }}"
+      state: directory
+
+  - name: Backup data on Managed Node
+    copy:
+      src: "{{ backup_files.src }}"
+      dest: "{{ backup_files.dest }}"
+      remote_src: true
+  
+      
+    
+
+
+
+      

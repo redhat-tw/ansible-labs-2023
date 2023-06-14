@@ -1,0 +1,38 @@
+- name: Deploy httpd Server
+  hosts: linux
+  gather_facts: no
+  tasks:
+  - name: Install httpd and start
+    yum:
+      name: httpd
+      state: present
+
+  - name: Customize index.html file
+    template:
+      src: templates/index.html.j2
+      dest: /var/www/html/index.html
+    notify: Restart httpd service
+
+  - name: Start httpd service
+    systemd: 
+      name: httpd 
+      enabled: yes 
+      state: started
+  
+  - name: Allow http connection through firewalld
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+    notify: Reload the firewalld configuration
+
+  handlers:
+  - name: Restart httpd service
+    systemd:
+      name: httpd
+      enabled: yes
+      state: restarted
+
+  - name: Reload the firewalld configuration
+    command:
+      firewall-cmd --reload

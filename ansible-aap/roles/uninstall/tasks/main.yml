@@ -1,0 +1,19 @@
+---
+
+- name: Remove httpd
+  import_tasks: uninstall-httpd.yml
+  when:
+  - not is_skip_uninstall
+  - "'apache' in app_name"
+
+- name: Remove php
+  import_tasks: uninstall-php.yml
+  when:
+  - not is_skip_uninstall
+  - "'apache' in app_name"
+
+- name: Remove mariadb
+  import_tasks: uninstall-mariadb.yml
+  when:
+  - not is_skip_uninstall
+  - "'mariadb' in app_name"

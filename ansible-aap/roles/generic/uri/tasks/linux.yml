@@ -1,0 +1,29 @@
+---
+
+- name: Test service healthy from URLs/IPs
+  uri:
+    url: "{{ item.url }}"
+    method: GET
+    status_code: "{{ item.status_code }}"
+    validate_certs: no
+  with_items: "{{ urls }}"
+  register: response
+  until: response.status == item.status_code
+  retries: "{{ uri_retries }}"
+  delay: "{{ uri_retry_delay }}"
+  delegate_to: "{{ uri_delegate_host }}"
+
+- name: Cross check service's content from URLs/IPs
+  uri:
+    url: "{{ item.url }}"
+    return_content: yes
+    method: GET
+    status_code: "{{ item.status_code }}"
+    validate_certs: no
+  with_items: "{{ urls }}"
+  register: response
+  until: response.status == item.status_code and item.content in response.content
+  retries: "{{ uri_retries }}"
+  delay: "{{ uri_retry_delay }}"
+  delegate_to: "{{ uri_delegate_host }}"
+  when: item.content is defined

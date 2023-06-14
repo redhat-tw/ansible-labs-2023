@@ -1,0 +1,8 @@
+---
+
+apache_packages: []
+
+apache_default_content: "Welcome to this site!"
+
+apache_listen_port: 80
+apache_firewalld_port: "{{ apache_listen_port }}/tcp"

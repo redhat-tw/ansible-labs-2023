@@ -1,0 +1,31 @@
+---
+
+- name: Installing mariadb Server packages
+  package:
+    name: "{{ mariadb_packages }}"
+    state: latest
+
+- name: Start mariadb server
+  service:
+    name: "{{ mariadb_service }}"
+    enabled: true
+    state: started
+
+- name: Check mariadb_root_password length >= 10
+  when: (mariadb_root_password | length) < 10
+  fail: 
+    msg: "mariadb root password invalid length, must >= 10 chars"
+
+- name: Setup mariadb root Password
+  mysql_user:
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+    user: root
+    check_implicit_admin: true
+    password: "{{ mariadb_root_password }}"
+    host: localhost
+
+- name: Collect info about databases and version
+  mysql_info:
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"

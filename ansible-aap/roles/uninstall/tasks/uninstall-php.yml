@@ -1,0 +1,6 @@
+---
+
+- name: remove PHP packages
+  package:
+    name: "{{ php_packages }}"
+    state: absent

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Ansible Tower Training 2023 - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f7f7f7;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Ansible-Tower-Training-2023" data-id="Ansible-Tower-Training-2023"><a class="anchor hidden-xs" href="#Ansible-Tower-Training-2023" title="Ansible-Tower-Training-2023"><span class="octicon octicon-link"></span></a><span>Ansible Tower Training 2023</span></h1><h6 id="tags-public-Red-Hat" data-id="tags-public-Red-Hat"><a class="anchor hidden-xs" href="#tags-public-Red-Hat" title="tags-public-Red-Hat"><span class="octicon octicon-link"></span></a><span>tags: </span><code>public</code><span> </span><code>Red Hat</code></h6><p><span class="toc"><ul>
+<li><a href="#Ansible-Tower-Training-2023" title="Ansible Tower Training 2023">Ansible Tower Training 2023</a><ul>
+<li><a href="#環境介紹" title="環境介紹">環境介紹</a></li>
+<li><a href="#查看環境" title="查看環境">查看環境</a></li>
+<li><a href="#建立-Inventory" title="建立 Inventory">建立 Inventory</a></li>
+<li><a href="#Credentials" title="Credentials">Credentials</a><ul>
+<li><a href="#建立-Credentials---SSH-Key" title="建立 Credentials - SSH Key">建立 Credentials - SSH Key</a></li>
+</ul>
+</li>
+<li><a href="#Project" title="Project">Project</a></li>
+<li><a href="#Job-template" title="Job template">Job template</a><ul>
+<li><a href="#Deploy-Job-Templates" title="Deploy Job Templates">Deploy Job Templates</a></li>
+<li><a href="#Deploy-Workflow-Job-Templates" title="Deploy Workflow Job Templates">Deploy Workflow Job Templates</a></li>
+</ul>
+</li>
+<li><a href="#RBAC" title="RBAC">RBAC</a><ul>
+<li><a href="#建立-User" title="建立 User">建立 User</a></li>
+<li><a href="#建立-Team" title="建立 Team">建立 Team</a></li>
+<li><a href="#設定-Team-Member" title="設定 Team Member">設定 Team Member</a></li>
+<li><a href="#設定-RBAC" title="設定 RBAC">設定 RBAC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</span></p><div style="page-break-after: always;"></div><h2 id="環境介紹" data-id="環境介紹"><a class="anchor hidden-xs" href="#環境介紹" title="環境介紹"><span class="octicon octicon-link"></span></a><span>環境介紹</span></h2><ul>
+<li><span>ansible-execution-node: Ansible 節點 (Control Node)</span></li>
+<li><span>student 主機: 管理節點 (Managed Node)</span></li>
+</ul><p><span>Ansible Tower: </span><a href="https://awx.lab.k2rb.com" target="_blank" rel="noopener"><span>https://awx.lab.k2rb.com</span></a></p><p><span>Ansible Tower Resources</span></p><table>
+<thead>
+<tr>
+<th><span>username</span></th>
+<th><span>Organization</span></th>
+<th><span>Role</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>student1</code></td>
+<td><span>student1</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student2</code></td>
+<td><span>student2</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student3</code></td>
+<td><span>student3</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student4</code></td>
+<td><span>student4</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student5</code></td>
+<td><span>student5</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student6</code></td>
+<td><span>student6</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student7</code></td>
+<td><span>student7</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student8</code></td>
+<td><span>student8</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student9</code></td>
+<td><span>student9</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student10</code></td>
+<td><span>student10</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student11</code></td>
+<td><span>student11</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student12</code></td>
+<td><span>student12</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student13</code></td>
+<td><span>student13</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student14</code></td>
+<td><span>student14</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+<tr>
+<td><code>student15</code></td>
+<td><span>student15</span></td>
+<td><span>Organization Admin</span></td>
+</tr>
+</tbody>
+</table><h2 id="查看環境" data-id="查看環境"><a class="anchor hidden-xs" href="#查看環境" title="查看環境"><span class="octicon octicon-link"></span></a><span>查看環境</span></h2><ol>
+<li><span>登入 Ansible Tower</span></li>
+<li><span>選擇 </span><code>ACCESS &gt; Organizations</code><span> 查看 Organization。每一位學生皆有自己的 Organization。 (Organization Admin)</span><br>
+<img src="https://hackmd.io/_uploads/SyogTeUBh.png" alt="" loading="lazy"></li>
+<li><span>登入 Jump Server，透過 Web Terminal 存取到 ansible-execution-node</span></li>
+<li><span>Clone 下來 Tower 使用到的 Lab</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment">## Demo Playbooks</span>
+git <span class="hljs-built_in">clone</span> https://github.com/ansible/ansible-tower-samples.git
+
+<span class="hljs-comment">## LAMP (Apache + Mysql + PHP) 範例</span>
+git <span class="hljs-built_in">clone</span> https://github.com/redhat-tw/ansible-labs-2023.git
+</div></div></code></pre><div style="page-break-after: always;"></div><h2 id="建立-Inventory" data-id="建立-Inventory"><a class="anchor hidden-xs" href="#建立-Inventory" title="建立-Inventory"><span class="octicon octicon-link"></span></a><span>建立 Inventory</span></h2><p><strong><span>實作目標：建立 Ansible Tower Inventory。</span></strong></p><ol>
+<li><span>登入 Jump Server，透過 Web Terminal 存取對應的 student 主機，並查看 IP 資訊</span></li>
+</ol><pre><code class="shell hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">ip -4 address
+</div></div></code></pre><ol start="2">
+<li><span>登入 Jump Server，透過 Web Terminal 存取到 ansible-execution-node，並進入 Lab 目錄。</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code"><span class="hljs-built_in">cd</span> ansible-labs-2023/ansible-aap
+</div></div></code></pre><ol start="3">
+<li><span>修改 Inventory，將 IP 改成步驟 1 查詢到的 student 主機的 IP。</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">vim inventory/hosts.ini
+</div></div></code></pre><pre><code class="yaml hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token punctuation">[</span>web<span class="token punctuation">]</span>
+192.168.1.12 ansible_user=root app_name='<span class="token punctuation">[</span><span class="token string">"apache"</span><span class="token punctuation">,</span> <span class="token string">"mariadb"</span><span class="token punctuation">]</span>'
+
+<span class="token punctuation">[</span>db<span class="token punctuation">]</span>
+192.168.1.12 ansible_user=root app_name='<span class="token punctuation">[</span><span class="token string">"apache"</span><span class="token punctuation">,</span> <span class="token string">"mariadb"</span><span class="token punctuation">]</span>'
+</div></div></code></pre><ol start="4">
+<li>
+<p><span>點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Inventories</code><span>，點擊右上角 + ，建立新的 Inventory。</span><br>
+<img src="https://hackmd.io/_uploads/SJBgCgISn.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>輸入 Inventory 資訊，Organization 選擇自己的組織，接著點選 SAVE。</span><br>
+<img src="https://hackmd.io/_uploads/HyL66l8S2.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>點選 Hosts，接著點選 +，新增管理主機。</span><br>
+<img src="https://hackmd.io/_uploads/SJavMbIS2.png" alt="" loading="lazy"></p>
+<p><span>根據步驟 3 的資訊，輸入 student 主機 IP 以及 extra variables，接著點擊 SAVE，存檔。</span><br>
+<img src="https://hackmd.io/_uploads/r1TtGWUr3.png" alt="" loading="lazy"></p>
+<p><img src="https://hackmd.io/_uploads/BkgiG-8rh.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>點選 Groups，接著點選 +，新增管理群組。</span><br>
+<img src="https://hackmd.io/_uploads/S1TDXZ8Bn.png" alt="" loading="lazy"></p>
+<p><span>建立一個 web 以及 db 群組。</span><br>
+<img src="https://hackmd.io/_uploads/S1rlEW8S2.png" alt="" loading="lazy"></p>
+<p><img src="https://hackmd.io/_uploads/rkyM4-LB2.png" alt="" loading="lazy"></p>
+<p><img src="https://hackmd.io/_uploads/H1EmVZUS2.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>點選 Hosts，點擊 student 主機。</span><br>
+<img src="https://hackmd.io/_uploads/S1KnEZLHh.png" alt="" loading="lazy"></p>
+<p><img src="https://hackmd.io/_uploads/HkVa4ZIS3.png" alt="" loading="lazy"><br>
+<span>選擇 GROUPS，接著點選 +。</span><br>
+<img src="https://hackmd.io/_uploads/rJxeBWUBn.png" alt="" loading="lazy"><br>
+<span>選擇 db 跟 web</span><br>
+<img src="https://hackmd.io/_uploads/S1KZHZ8r2.png" alt="" loading="lazy"><br>
+<span>最後回到 Hosts 畫面，可以看到已經有加入 web, db groups</span><br>
+<img src="https://hackmd.io/_uploads/B194SZ8r3.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>完成 Inventory 建立</span><br>
+<img src="https://hackmd.io/_uploads/r1wYUZIHh.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Templates</code><span>，選擇 </span><code>demo-job-template</code><span>，接著點擊右側火箭符號執行。</span><br>
+<img src="https://hackmd.io/_uploads/BkxUPWIB3.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>執行後發現失敗，由於尚未設定 Credentials，因此沒辦法存取 Student 主機。</span><br>
+<img src="https://hackmd.io/_uploads/rkhiPWIB3.png" alt="" loading="lazy"></p>
+</li>
+</ol><div style="page-break-after: always;"></div><h2 id="Credentials" data-id="Credentials"><a class="anchor hidden-xs" href="#Credentials" title="Credentials"><span class="octicon octicon-link"></span></a><span>Credentials</span></h2><p><strong><span>實作目標：建立 Ansible Tower Credentials，並使用 Credentaisl 存取管理節點。</span></strong></p><h3 id="建立-Credentials---SSH-Key" data-id="建立-Credentials---SSH-Key"><a class="anchor hidden-xs" href="#建立-Credentials---SSH-Key" title="建立-Credentials---SSH-Key"><span class="octicon octicon-link"></span></a><span>建立 Credentials - SSH Key</span></h3><p><strong><span>實作目標：建立 Ansible Tower Credential，並使用 SSH Key 來存取管理主機。</span></strong></p><ol>
+<li><span>登入 Jump Server，透過 Web Terminal 存取 ansible-execution-node 主機，複製 SSH Public Key，並將該 Key 複製到 student 主機 </span><code>.ssh/authorized_keys</code><span>。</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code"><span class="hljs-built_in">cat</span> .ssh/id_rsa.pub
+</div></div></code></pre><blockquote>
+<p><span>替代方式為在 ansible-execution-node  執行 </span><code>ssh-copy-id root@&lt;student IP&gt;</code></p>
+</blockquote><ol start="2">
+<li><span>登入 Jump Server，透過 Web Terminal 存取到 ansible-execution-node。複製 SSH Private Key</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code"><span class="hljs-built_in">cat</span> .ssh/id_rsa
+</div></div></code></pre><ol start="3">
+<li>
+<p><span>到 Ansible Tower，點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Credentials</code><span>，點擊右上角 + ，建立新的 Credential。</span></p>
+</li>
+<li>
+<p><span>填入 Credential 資訊，Type 選擇 Machine，輸入使用者名稱，並在 SSH PRIVATE KEY，貼上步驟 2 的 SSH Private Key。</span><br>
+<img src="https://hackmd.io/_uploads/HJs8m6KHh.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>再次執行 Job Template，點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Templates</code><span>，選擇 </span><code>demo-job-template</code><span>，接著點擊右側火箭符號執行。Credentials 選擇剛剛建立的 Credentials。</span><br>
+<img src="https://hackmd.io/_uploads/BJcN0-IHn.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>可以看到執行成功畫面。</span><br>
+<img src="https://hackmd.io/_uploads/S1fUR-UB3.png" alt="" loading="lazy"></p>
+</li>
+</ol><div style="page-break-after: always;"></div><h2 id="Project" data-id="Project"><a class="anchor hidden-xs" href="#Project" title="Project"><span class="octicon octicon-link"></span></a><span>Project</span></h2><ol>
+<li><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Projects</code><span>，點擊 + 建立新的 Project，並使用對應的 Organization 以及輸入 Lab SCM URL。</span></li>
+</ol><ul>
+<li><span>Name: LAMP Project</span></li>
+<li><span>Organization: &lt;依據自己的組織設定&gt;</span></li>
+<li><span>SCM TYPE: Git</span></li>
+<li><span>SCM URL: </span><a href="https://github.com/redhat-tw/ansible-labs-2023.git" target="_blank" rel="noopener"><span>https://github.com/redhat-tw/ansible-labs-2023.git</span></a><br>
+<img src="https://hackmd.io/_uploads/SJkUESPrh.png" alt="" loading="lazy"></li>
+</ul><ol start="2">
+<li><span>完成後點擊同步目錄。</span><br>
+<img src="https://hackmd.io/_uploads/r1q_4SPBn.png" alt="" loading="lazy"></li>
+</ol><div style="page-break-after: always;"></div><h2 id="Job-template" data-id="Job-template"><a class="anchor hidden-xs" href="#Job-template" title="Job-template"><span class="octicon octicon-link"></span></a><span>Job template</span></h2><p><strong><span>實作目標：建立 Ansible Tower Job Template 以及 Workflow Job Template。</span></strong></p><ol>
+<li><span>登入 Jump Server，透過 Web Terminal 存取到 ansible-execution-node。進入到 Lab 目錄。</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code"><span class="hljs-built_in">cd</span> ansible-labs-2023/ansible-aap
+</div></div></code></pre><ol start="2">
+<li><span>查看 Inventory Host Var 跟 Group Var，並記錄下來。</span></li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-comment">## Host Vars</span>
+<span class="hljs-built_in">cat</span> inventory/hosts.ini
+
+<span class="hljs-comment">## Group Vars</span>
+<span class="hljs-built_in">cat</span> inventory/group_vars/db.yml
+<span class="hljs-built_in">cat</span> inventory/group_vars/web.yml
+<span class="hljs-built_in">cat</span> inventory/group_vars/all.yml
+</div></div></code></pre><ol start="3">
+<li>
+<p><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Inventories</code><span>，選擇之前建立的 Inventory，將 Host Var 跟 Group Var 分別填入到 Ansible Tower Inventory 裡。</span><br>
+<img src="https://hackmd.io/_uploads/B1ZN-BvSn.png" alt="" loading="lazy"></p>
+<p><img src="https://hackmd.io/_uploads/rJYrWBvS2.png" alt="" loading="lazy"></p>
+<p><img src="https://hackmd.io/_uploads/H12U-rPBn.png" alt="" loading="lazy"></p>
+</li>
+</ol><h3 id="Deploy-Job-Templates" data-id="Deploy-Job-Templates"><a class="anchor hidden-xs" href="#Deploy-Job-Templates" title="Deploy-Job-Templates"><span class="octicon octicon-link"></span></a><span>Deploy Job Templates</span></h3><ol>
+<li><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Templates</code><span>，點選 + 建立以下這些 Job Templates:</span></li>
+</ol><ul>
+<li><span>100-install-mariadb</span>
+<ul>
+<li><span>安裝 MariaDB</span></li>
+<li><span>Playbooks: ansible-aap/100-install-mariadb.yml</span></li>
+</ul>
+</li>
+<li><span>200-install-apache</span>
+<ul>
+<li><span>安裝 httpd</span></li>
+<li><span>Playbooks: ansible-aap/200-install-apache.yml</span></li>
+</ul>
+</li>
+<li><span>300-install-php</span>
+<ul>
+<li><span>安裝 PHP 並設定網頁檔</span></li>
+<li><span>Playbooks: ansible-aap/300-install-php.yml</span></li>
+</ul>
+</li>
+<li><span>400-configure-db</span>
+<ul>
+<li><span>設定 MariaDB (建立網站所需的 Data)</span></li>
+<li><span>Playbooks: ansible-aap/400-configure-db.yml</span></li>
+</ul>
+</li>
+<li><span>500-smoke-test</span>
+<ul>
+<li><span>測試網頁服務正常</span></li>
+<li><span>Playbooks: ansible-aap/500-smoke-test.yml</span></li>
+</ul>
+</li>
+<li><span>600-stop-service</span>
+<ul>
+<li><span>停掉 MariaDB 及 httpd 服務</span></li>
+<li><span>Playbooks: ansible-aap/600-stop-service.yml</span></li>
+</ul>
+</li>
+<li><span>900-uninstall</span>
+<ul>
+<li><span>解除安裝 MariaDB, httpd, PHP</span></li>
+<li><span>Playbooks: ansible-aap/900-uninstall.yml</span></li>
+</ul>
+</li>
+</ul><p><code>100-install-mariadb</code><br>
+<img src="https://hackmd.io/_uploads/Sy9MzSDBh.png" alt="" loading="lazy"></p><p><code>200-install-apache</code><br>
+<img src="https://hackmd.io/_uploads/r1xNMHvH2.png" alt="" loading="lazy"></p><p><code>300-install-php</code><br>
+<img src="https://hackmd.io/_uploads/BJUBfSPr3.png" alt="" loading="lazy"></p><p><code>400-configure-db</code><br>
+<img src="https://hackmd.io/_uploads/B1kPMBwr3.png" alt="" loading="lazy"></p><p><code>500-smoke-test</code><br>
+<img src="https://hackmd.io/_uploads/HJzOzrwr2.png" alt="" loading="lazy"></p><p><code>600-stop-service</code><br>
+<img src="https://hackmd.io/_uploads/HkmKfSDrn.png" alt="" loading="lazy"></p><p><code>900-uninstall</code><br>
+<img src="https://hackmd.io/_uploads/B1E9fSwBn.png" alt="" loading="lazy"></p><ol start="2">
+<li>
+<p><span>完成後，可以嘗試依序單點執行各個 Job Template。</span><br>
+<img src="https://hackmd.io/_uploads/Sy8MUHPH3.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>部署完成 LAMP 後，可以於 Jump Server，透過 Web Terminal 存取到 ansible-execution-node，嘗試連線服務。</span></p>
+</li>
+</ol><pre><code class="bash hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span></div><div class="code">curl http://&lt;student 主機 IP&gt;:&lt;設定的 port, 預設是 80&gt;/employee.php
+curl http://&lt;student 主機 IP&gt;:&lt;設定的 port, 預設是 80&gt;/info.php
+</div></div></code></pre><h3 id="Deploy-Workflow-Job-Templates" data-id="Deploy-Workflow-Job-Templates"><a class="anchor hidden-xs" href="#Deploy-Workflow-Job-Templates" title="Deploy-Workflow-Job-Templates"><span class="octicon octicon-link"></span></a><span>Deploy Workflow Job Templates</span></h3><ol>
+<li><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; RESOURCES &gt; Templates</code><span>，點選 + 建立以下這些 Workflow Job Templates:</span></li>
+</ol><ul>
+<li><span>deploy-lamp-workflow</span>
+<ul>
+<li><span>部署 LAMP 服務</span></li>
+</ul>
+</li>
+<li><span>remove-lamp-workflow</span>
+<ul>
+<li><span>移除 LAMP 服務</span></li>
+</ul>
+</li>
+</ul><ol start="2">
+<li>
+<p><span>建立 </span><code>deploy-lamp-workflow</code><span> Workflow Job Template。</span><br>
+<img src="https://hackmd.io/_uploads/S1JCLrvSh.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>點擊 WORKFLOW VISUALIZER，並建立以下 Workflow。</span><br>
+<img src="https://hackmd.io/_uploads/SkMXvSvBn.png" alt="" loading="lazy"><br>
+<img src="https://hackmd.io/_uploads/ByMSDBDHn.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>建立 </span><code>remove-lamp-workflow</code><span> Workflow Job Template。</span><br>
+<img src="https://hackmd.io/_uploads/SJmOPrDB2.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>點擊 WORKFLOW VISUALIZER，並建立以下 Workflow。</span><br>
+<img src="https://hackmd.io/_uploads/SJeYPBPS2.png" alt="" loading="lazy"><br>
+<img src="https://hackmd.io/_uploads/BJBFPSDH3.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>完成後，可以嘗試執行整個 Workflow。</span><br>
+<img src="https://hackmd.io/_uploads/Bkh2PrwHn.png" alt="" loading="lazy"></p>
+</li>
+</ol><div style="page-break-after: always;"></div><h2 id="RBAC" data-id="RBAC"><a class="anchor hidden-xs" href="#RBAC" title="RBAC"><span class="octicon octicon-link"></span></a><span>RBAC</span></h2><p><span>在此 Lab 會建立三種 Team:</span></p><ul>
+<li><span>auditors: 稽核人員，能看到全部 Organization 資源</span></li>
+<li><span>development: 開發者，可以查看跟修改所有 Inventory 以及 Job Templates。也能夠使用 Inventory 及執行 Job Template。</span></li>
+<li><span>operation: 系統維運人員，可以使用 Inventory 及執行 Job Templates。但不可作任何變動。</span></li>
+</ul><table>
+<thead>
+<tr>
+<th><span>User</span></th>
+<th><span>Team</span></th>
+<th><span>Role</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view_&lt;student&gt;_1</code></td>
+<td><span>auditors</span></td>
+<td><span>Orgzniation Auditor</span></td>
+</tr>
+<tr>
+<td><code>dev_&lt;student&gt;_1</code></td>
+<td><span>development</span></td>
+<td><span>Inventory Admin </span><br><span> Job Template Admin </span><br><span> Workflow Admin </span><br><span> Credentials Admin </span><br><span>Project Use</span></td>
+</tr>
+<tr>
+<td><code>op_&lt;student&gt;_1</code></td>
+<td><span>operation</span></td>
+<td><span>Execute </span><br><span> Inventories Use </span><br><span> Credentials Use</span></td>
+</tr>
+</tbody>
+</table><h3 id="建立-User" data-id="建立-User"><a class="anchor hidden-xs" href="#建立-User" title="建立-User"><span class="octicon octicon-link"></span></a><span>建立 User</span></h3><ol>
+<li><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; ACCESS &gt; Users</code><span>，點選 + 建立以下這些使用者:</span></li>
+</ol><ul>
+<li><code>view_&lt;student&gt;_1</code></li>
+<li><code>dev_&lt;student&gt;_1</code></li>
+<li><code>op_&lt;student&gt;_1</code><br>
+<img src="https://hackmd.io/_uploads/Skac5BDBh.png" alt="" loading="lazy"><br>
+<code>view_&lt;student&gt;_1</code><br>
+<img src="https://hackmd.io/_uploads/SJCacHPr3.png" alt="" loading="lazy"><br>
+<code>dev_&lt;student&gt;_1</code><br>
+<img src="https://hackmd.io/_uploads/ByXgiBwS3.png" alt="" loading="lazy"><br>
+<code>op_&lt;student&gt;_1</code><br>
+<img src="https://hackmd.io/_uploads/HkXmsBwS3.png" alt="" loading="lazy"></li>
+</ul><h3 id="建立-Team" data-id="建立-Team"><a class="anchor hidden-xs" href="#建立-Team" title="建立-Team"><span class="octicon octicon-link"></span></a><span>建立 Team</span></h3><ol>
+<li><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; ACCESS &gt; Team</code><span>，點選 + 建立以下這些 Team:</span></li>
+</ol><ul>
+<li><code>auditors</code></li>
+<li><code>development</code></li>
+<li><code>operation</code><br>
+<img src="https://hackmd.io/_uploads/HJq5srwB3.png" alt="" loading="lazy"><br>
+<code>auditors</code><br>
+<img src="https://hackmd.io/_uploads/BJ6sirvHn.png" alt="" loading="lazy"><br>
+<code>development</code><br>
+<img src="https://hackmd.io/_uploads/H1kpjHvrn.png" alt="" loading="lazy"><br>
+<code>operation</code><br>
+<img src="https://hackmd.io/_uploads/S15TsSwHn.png" alt="" loading="lazy"></li>
+</ul><h3 id="設定-Team-Member" data-id="設定-Team-Member"><a class="anchor hidden-xs" href="#設定-Team-Member" title="設定-Team-Member"><span class="octicon octicon-link"></span></a><span>設定 Team Member</span></h3><ol>
+<li>
+<p><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; ACCESS &gt; Team</code><span>，點選任一 Team，接著點擊上方 Users，將剛剛新增的使用者加進去對應的 Groups。</span></p>
+<p><code>auditors</code><br>
+<img src="https://hackmd.io/_uploads/H1tq2HvSn.png" alt="" loading="lazy"><br>
+<code>development</code><br>
+<img src="https://hackmd.io/_uploads/HkKBnBDr2.png" alt="" loading="lazy"><br>
+<code>operation</code><br>
+<img src="https://hackmd.io/_uploads/rknXhHPBh.png" alt="" loading="lazy"></p>
+</li>
+</ol><blockquote>
+<p><span>可忽略預設的使用者</span></p>
+</blockquote><h3 id="設定-RBAC" data-id="設定-RBAC"><a class="anchor hidden-xs" href="#設定-RBAC" title="設定-RBAC"><span class="octicon octicon-link"></span></a><span>設定 RBAC</span></h3><ol>
+<li>
+<p><span>進入 Ansible Tower 點選左側 </span><code>Ansible Tower Dashboard &gt; ACCESS &gt; Team</code><span>，點選任一 Team，接著點擊上方 PERMISSIONS，設定對應的權限。</span></p>
+</li>
+<li>
+<p><span>設定 auditors 權限</span><br>
+<span>Organization Auditors</span><br>
+<img src="https://hackmd.io/_uploads/rJUy6SDHn.png" alt="" loading="lazy"><br>
+<span>完成</span><br>
+<img src="https://hackmd.io/_uploads/rkQgaHvr3.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>設定 development 權限</span><br>
+<span>Job Template Admin</span><br>
+<img src="https://hackmd.io/_uploads/HJINTrDBn.png" alt="" loading="lazy"><br>
+<span>Workflow Admin</span><br>
+<img src="https://hackmd.io/_uploads/B1WSTSvr2.png" alt="" loading="lazy"><br>
+<span>Inventory Admin</span><br>
+<img src="https://hackmd.io/_uploads/ryy8TBwS2.png" alt="" loading="lazy"><br>
+<span>Project Use</span><br>
+<img src="https://hackmd.io/_uploads/SynYpSDH3.png" alt="" loading="lazy"><br>
+<span>Credentials Admin</span><br>
+<img src="https://hackmd.io/_uploads/r17BxIwBn.png" alt="" loading="lazy"><br>
+<span>完成</span><br>
+<img src="https://hackmd.io/_uploads/rJo8l8wSn.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>設定 operation 權限</span><br>
+<span>Organization Execute</span><br>
+<img src="https://hackmd.io/_uploads/r1hrJUDr3.png" alt="" loading="lazy"><br>
+<span>Inventory Use</span><br>
+<img src="https://hackmd.io/_uploads/ryuwyUwB2.png" alt="" loading="lazy"><br>
+<span>Credentails Use</span><br>
+<img src="https://hackmd.io/_uploads/ByOKxIPrn.png" alt="" loading="lazy"><br>
+<span>完成</span><br>
+<img src="https://hackmd.io/_uploads/S1Uql8Prh.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><span>完成後測試用各個使用者登入確認權限是否正確。</span></p>
+</li>
+</ol><ul>
+<li><span>auditors: 稽核人員，能看到全部 Organization 資源。</span></li>
+<li><span>development: 開發者，可以查看跟修改所有 Inventory 以及 Job Templates。也能夠使用 Inventory 及執行 Job Template。</span></li>
+<li><span>operation: 系統維運人員，可以使用 Inventory 及執行 Job Templates。但不可作任何變動。</span></li>
+</ul></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#Ansible-Tower-Training-2023" title="Ansible Tower Training 2023">Ansible Tower Training 2023</a><ul class="nav">
+<li><a href="#環境介紹" title="環境介紹">環境介紹</a></li>
+<li><a href="#查看環境" title="查看環境">查看環境</a></li>
+<li><a href="#建立-Inventory" title="建立 Inventory">建立 Inventory</a></li>
+<li><a href="#Credentials" title="Credentials">Credentials</a><ul class="nav">
+<li><a href="#建立-Credentials---SSH-Key" title="建立 Credentials - SSH Key">建立 Credentials - SSH Key</a></li>
+</ul>
+</li>
+<li><a href="#Project" title="Project">Project</a></li>
+<li><a href="#Job-template" title="Job template">Job template</a><ul class="nav">
+<li><a href="#Deploy-Job-Templates" title="Deploy Job Templates">Deploy Job Templates</a></li>
+<li><a href="#Deploy-Workflow-Job-Templates" title="Deploy Workflow Job Templates">Deploy Workflow Job Templates</a></li>
+</ul>
+</li>
+<li><a href="#RBAC" title="RBAC">RBAC</a><ul class="nav">
+<li><a href="#建立-User" title="建立 User">建立 User</a></li>
+<li><a href="#建立-Team" title="建立 Team">建立 Team</a></li>
+<li><a href="#設定-Team-Member" title="設定 Team Member">設定 Team Member</a></li>
+<li><a href="#設定-RBAC" title="設定 RBAC">設定 RBAC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#Ansible-Tower-Training-2023" title="Ansible Tower Training 2023">Ansible Tower Training 2023</a><ul class="nav">
+<li><a href="#環境介紹" title="環境介紹">環境介紹</a></li>
+<li><a href="#查看環境" title="查看環境">查看環境</a></li>
+<li><a href="#建立-Inventory" title="建立 Inventory">建立 Inventory</a></li>
+<li><a href="#Credentials" title="Credentials">Credentials</a><ul class="nav">
+<li><a href="#建立-Credentials---SSH-Key" title="建立 Credentials - SSH Key">建立 Credentials - SSH Key</a></li>
+</ul>
+</li>
+<li><a href="#Project" title="Project">Project</a></li>
+<li><a href="#Job-template" title="Job template">Job template</a><ul class="nav">
+<li><a href="#Deploy-Job-Templates" title="Deploy Job Templates">Deploy Job Templates</a></li>
+<li><a href="#Deploy-Workflow-Job-Templates" title="Deploy Workflow Job Templates">Deploy Workflow Job Templates</a></li>
+</ul>
+</li>
+<li><a href="#RBAC" title="RBAC">RBAC</a><ul class="nav">
+<li><a href="#建立-User" title="建立 User">建立 User</a></li>
+<li><a href="#建立-Team" title="建立 Team">建立 Team</a></li>
+<li><a href="#設定-Team-Member" title="設定 Team Member">設定 Team Member</a></li>
+<li><a href="#設定-RBAC" title="設定 RBAC">設定 RBAC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+---
+
+apache_packages:
+- httpd 
+- httpd-tools
+
+php_packages:
+- php
+- php-cli
+- php-fpm
+- php-zip
+- php-devel
+- php-gd
+- php-curl
+- php-mysqlnd
+- php-mbstring
+- php-process
+- php-xmlrpc
+- php-xml
+- php-xml
+- php-pear
+- php-bcmath
+- php-json
+
+mariadb_packages:
+- mariadb
+- python3-PyMySQL
+- mariadb-server
+- mariadb-devel
+- mariadb-server-utils

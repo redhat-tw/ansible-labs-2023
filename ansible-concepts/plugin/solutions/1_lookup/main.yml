@@ -1,0 +1,10 @@
+---
+
+- name: lookup plugin demo
+  hosts: linux
+  gather_facts: no
+  tasks:
+  ## Use lookup plugin
+  - name: Display the employ data
+    debug: 
+      msg: "{{ lookup('file', './file/employ_lists.json')  }}"

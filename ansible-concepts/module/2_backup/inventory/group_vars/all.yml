@@ -1,0 +1,6 @@
+---
+
+
+backup_files:
+  src: "/var/www/html/index.html" # folder name or file name
+  dest: "/tmp/backup" # folder name

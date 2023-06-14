@@ -1,0 +1,10 @@
+---
+
+- &default_config
+  hosts: web
+  gather_facts: false
+  become: false
+  serial: 1
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles:
+  - { role: roles/httpd, tags: apache }

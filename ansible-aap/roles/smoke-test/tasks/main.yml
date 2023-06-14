@@ -1,0 +1,9 @@
+---
+
+- name: Smoke testing service for application's URLs
+  import_role:
+    name: generic/uri
+  vars:
+    urls: "{{ smoke_test_urls }}"
+    uri_delegate_host: "{{ smoke_test_delegate_host }}"
+  when: (smoke_test_urls | length) > 0 and not is_skip_smoke_testing

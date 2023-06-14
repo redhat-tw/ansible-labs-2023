@@ -1,0 +1,24 @@
+---
+
+- name: Create Linux User
+  hosts: linux
+  gather_facts: no
+  vars_files:
+  - ./vars/userlist-plaintext.yml
+  tasks:
+  - name: Create groups
+    group:
+      name: "{{ item.group }}"
+      state: present
+    loop: "{{ user_list }}" 
+    no_log: "{{ no_log | default(true) }}"
+
+  - name: Create Users 
+    user:
+      name: "{{ item.username }}"
+      state: present
+      password: "{{ item.password | password_hash('sha512','A512') }}"
+      shell: /bin/bash
+      group: "{{ item.group }}"
+    loop: "{{ user_list }}"
+    no_log: "{{ no_log | default(true) }}"

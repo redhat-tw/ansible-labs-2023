@@ -1,0 +1,14 @@
+---
+
+- name: Remove Linux User
+  hosts: linux
+  gather_facts: no
+  vars_files:
+  - ./vars/userlist-plaintext.yml
+  tasks:
+  - name: Remove Users 
+    user:
+      name: "{{ item.username }}"
+      state: absent
+    loop: "{{ user_list }}"
+    no_log: "{{ no_log | default(true) }}"

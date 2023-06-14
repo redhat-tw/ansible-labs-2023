@@ -1,0 +1,14 @@
+- name: Remove httpd Server
+  hosts: linux
+  gather_facts: no
+  tasks:
+  - name: Stop httpd service
+    systemd: 
+      name: httpd 
+      enabled: yes 
+      state: stopped
+
+  - name: Uninstall httpd
+    yum:
+      name: httpd
+      state: absent
